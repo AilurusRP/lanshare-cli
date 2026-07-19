@@ -1,21 +1,18 @@
+import 'dart:convert';
 import 'dart:io';
 
-String msgInput() {
+msgInput({required Function(String) onMsg}) {
   print("Input your message below.");
   print(
       "To finish input and send the message, type `:` in a new line and press `Enter`.");
   print("--------------------Your Message-------------------");
 
-  while (true) {
-    final msgLines = <String>[];
-    String? line;
-
-    while ((line = stdin.readLineSync()) != null && line != ":") {
-      msgLines.add(line!);
+  final msgLines = <String>[];
+  stdin.transform(utf8.decoder).transform(const LineSplitter()).listen((line) {
+    if (line != ":") {
+      msgLines.add(line);
+    } else {
+      onMsg(msgLines.join("\n"));
     }
-
-    if (msgLines.isEmpty) continue;
-
-    return msgLines.join('\n');
-  }
+  });
 }
