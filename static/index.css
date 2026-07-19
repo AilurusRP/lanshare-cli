@@ -1,0 +1,142 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #795548;
+    font-family: Sans-serif;
+}
+
+.app-area {
+    height: 94vh;
+    width: 74vh;
+    margin: 3vh calc((100vw - 74vh) / 2) 3vh calc((100vw - 74vh) / 2);
+    background-color: white;
+    border-radius: 10px;
+}
+
+.title-bar {
+    text-align: left;
+    padding: 0 4vh;
+    height: 8vh;
+    line-height: 8vh;
+    font-size: 22px;
+}
+
+.divider {
+    height: 0px;
+    width: 74vh;
+    border-top: 1px solid #795548;
+    opacity: 0.2;
+}
+
+.msg-list-box {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    padding: 1vh 2vh 1vh 2vh;
+    overflow-y: scroll;
+}
+
+.msg-list-elem-left {
+    background-color: #795548;
+    min-height: 2rem;
+    height: fit-content;
+    max-width: 50vh;
+    word-wrap: break-word;
+    line-height: 2rem;
+    border-radius: 5px;
+    padding: 0.5vh 1.5vh 0.5vh 1.5vh;
+    width: fit-content;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    color: white;
+    overflow-y: visible;
+    margin: 2vh 0 4vh 1vh;
+}
+
+.msg-list-elem-right-outter {
+    text-align: right;
+}
+
+.msg-list-elem-right {
+    display: inline-block;
+    background-color: #795548;
+    min-height: 2rem;
+    height: fit-content;
+    max-width: 50vh;
+    word-wrap: break-word;
+    line-height: 2rem;
+    border-radius: 5px;
+    padding: 0.5vh 1.5vh 0.5vh 1.5vh;
+    width: fit-content;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    color: white;
+    overflow-y: visible;
+    margin: 2vh 0 4vh 24vh;
+}
+
+.msg-editor {
+    height: 36vh;
+
+    /* To get rid of the extra space under textarea. 
+    (https://stackoverflow.com/questions/7144843/extra-space-under-textarea-differs-along-browsers) */
+    line-height: 0;
+}
+
+.msg-editor-top-bar {
+    height: 5vh;
+    overflow: hidden;
+}
+
+.msg-editor-select-file-button {
+    height: 4vh;
+    margin: .5vh 0 .5vh 2vh;
+    color: #795548;
+    line-height: 5vh;
+}
+
+.msg-editor-top-bar img {
+    height: 4vh;
+    opacity: .7;
+}
+
+.msg-editor-text-area {
+    height: 23vh;
+    width: 74vh;
+    margin: 0;
+    padding: 0 2vh 1vh 2vh;
+    border: 0;
+    resize: none;
+}
+
+.msg-editor-text-area:focus {
+    outline: none;
+}
+
+.msg-editor-bottom-bar {
+    height: 8vh;
+    width: 74vh;
+    overflow: hidden;
+}
+
+.msg-editor-send-button {
+    background-color: #79554822;
+    height: 4.5vh;
+    width: 12vh;
+    margin: 1vh 3vh 0vh 59vh;
+    padding: 0.4vh;
+    text-align: center;
+    line-height: 4vh;
+    color: #79554888;
+    border-radius: 5px;
+}
+
+.msg-editor-send-button-enabled {
+    background-color: #795548;
+    color: white;
+}
