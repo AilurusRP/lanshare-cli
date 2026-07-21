@@ -2,6 +2,12 @@
 # Created by `dart pub`
 .dart_tool/
 
+# Executable files and compressed files
 lanshare-cli
+*.exe
+*.msi
+*.zip
+*.tar.xz
 
-lanshare-cli-v*
+# Wix generated files
+*.wixpdb
