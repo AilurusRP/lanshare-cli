@@ -43,8 +43,21 @@ startServer() async {
     return Response.ok(jsonEncode(MsgResponse(200)));
   });
 
-  var webHandler =
-      createStaticHandler('lanshare-web', defaultDocument: "index.html");
+  late final String lanshareWebPath;
+  final devDir = Directory("lanshare-web");
+  if (devDir.existsSync()) {
+    lanshareWebPath = devDir.path;
+  } else {
+    final exeDir = File(Platform.resolvedExecutable).parent.path;
+    lanshareWebPath = '$exeDir/lanshare-web';
+    if (!Directory(lanshareWebPath).existsSync()) {
+      throw Exception(
+          "No LANShare-Web found. Please ensure it is in the same directory as your executable file.");
+    }
+  }
+
+  final webHandler =
+      createStaticHandler(lanshareWebPath, defaultDocument: "index.html");
 
   final handler = Cascade().add(app.call).add(webHandler).handler;
 
