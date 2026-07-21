@@ -15,5 +15,5 @@ done
 
 MAIN_BIN="$TARGET_DIR/$APP_NAME"
 chmod +x  "$MAIN_BIN"
-ln -sf "$MAIN_BIN" "/usr/local/bin/$APP_NAME"
+ln -sf "$MAIN_BIN" "/usr/local/bin/lanshare"
 
