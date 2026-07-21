@@ -1,0 +1,50 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+    <Package Name="lanshare-cli"
+        Manufacturer="AilurusRP"
+        Version="1.0.0"
+        UpgradeCode="d561ad27-c020-48da-8abe-386a8597e067"
+    >
+
+        <MajorUpgrade
+            DowngradeErrorMessage="A newer version is already installed; please uninstall it first." />
+        <MediaTemplate EmbedCab="yes" />
+
+        <StandardDirectory Id="ProgramFiles64Folder">
+            <Directory Id="INSTALLFOLDER" Name="lanshare-cli">
+                <Component Id="MainExe" Guid="*">
+                    <File Id="MainExeFile" Source="lanshare.exe" KeyPath="yes" />
+                    <Environment Id="AddToPath" Name="PATH" Value="[INSTALLFOLDER]"
+                        Permanent="no" Part="last" Action="set" System="yes" />
+                </Component>
+                <Directory Id="WebFolder" Name="lanshare-web" />
+            </Directory>
+        </StandardDirectory>
+
+        <ComponentGroup Id="WebFiles" Directory="WebFolder">
+            <Files Include="lanshare-web\**" />
+        </ComponentGroup>
+
+        <StandardDirectory Id="ProgramMenuFolder">
+            <Component Id="StartMenuShortcut" Guid="*">
+                <Shortcut Id="AppShortcut"
+                    Name="lanshare-cli"
+                    Target="[INSTALLFOLDER]lanshare.exe"
+                    WorkingDirectory="INSTALLFOLDER" />
+                <RemoveFolder Id="RemoveStartMenuFolder" On="uninstall" />
+                <RegistryValue Root="HKLM"
+                    Key="Software\AilurusRP\lanshare-cli"
+                    Name="installed"
+                    Type="integer"
+                    Value="1"
+                    KeyPath="yes" />
+            </Component>
+        </StandardDirectory>
+
+        <Feature Id="MainFeature" Title="lanshare-cli" Level="1">
+            <ComponentRef Id="MainExe" />
+            <ComponentGroupRef Id="WebFiles" />
+            <ComponentRef Id="StartMenuShortcut" />
+        </Feature>
+
+    </Package>
+</Wix>
